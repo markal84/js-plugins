@@ -1,3 +1,4 @@
+
 /* HTML Template */
 var slide = document.getElementById('slide').innerHTML; // zaznaczamy nasz slide
 //console.log(slide);
@@ -39,3 +40,15 @@ flkty.on( 'scroll', function( progress ) { // function to animate progress bar
     progress = Math.max( 0, Math.min( 1, progress ) );
     progressBar.style.width = progress * 100 + '%';
   });
+
+/* Maps */
+window.initMap = function(){
+  var uluru = {lat: -25.344, lng: 131.036};
+  var map = new google.maps.Map(
+    document.getElementById('map'), {
+    zoom: 4, 
+    center: uluru});
+  var marker = new google.maps.Marker({
+    position: uluru, 
+    map: map});
+}
