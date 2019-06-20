@@ -14,7 +14,7 @@ var cell = function(event){flkty.selectCell( '.cell1')} // select first cell in 
 restart.addEventListener('click',cell ); // after clicking restart button select first cell
 
 var progressBar = document.querySelector('.progress-bar'); //select div with class progress bar
-flkty.on( 'scroll', function( progress ) {
+flkty.on( 'scroll', function( progress ) { // function to animate progress bar
     progress = Math.max( 0, Math.min( 1, progress ) );
     progressBar.style.width = progress * 100 + '%';
   });
