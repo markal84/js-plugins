@@ -1,6 +1,6 @@
 /* HTML Template */
 var slide = document.getElementById('slide').innerHTML; // zaznaczamy nasz slide
-console.log(slide);
+//console.log(slide);
 Mustache.parse(slide); // optymalizujemy bo bedziemy kozystac ze slide kilka razy (petla)
 
 
