@@ -1,3 +1,22 @@
+/* HTML Template */
+var slide = document.getElementById('slide').innerHTML; // zaznaczamy nasz slide
+Mustache.parse(slide); // optymalizujemy bo bedziemy kozystac ze slide kilka razy (petla)
+var slides = 
+  {   
+    class: 'cell1',
+    id: '1',
+    image: "background-image: url(images/slide-1.jpg)",
+    title: 'photo1',
+  };
+
+var generateSlide = Mustache.render(slide, slides); // generujemy nasz template
+
+result = document.getElementById('main'); // zazanaczamy miejsce gdzie trafia wygenerowane slajdy
+result.insertAdjacentHTML('beforeend', generateSlide); // dodajemy slidy do diva o id main
+
+
+
+/* Slides */
 var elem = document.querySelector('.main-carousel');
 var flkty = new Flickity( elem, {
   // options
