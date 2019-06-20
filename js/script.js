@@ -1,19 +1,21 @@
 /* HTML Template */
 var slide = document.getElementById('slide').innerHTML; // zaznaczamy nasz slide
+console.log(slide);
 Mustache.parse(slide); // optymalizujemy bo bedziemy kozystac ze slide kilka razy (petla)
-var slides = 
-  {   
-    class: 'cell1',
-    id: '1',
-    image: "background-image: url(images/slide-1.jpg)",
-    title: 'photo1',
-  };
 
-var generateSlide = Mustache.render(slide, slides); // generujemy nasz template
+
+//var generateSlide = Mustache.render(slide, slides); // generujemy nasz template ( test - generowanie slide bez petli)
+
+var slidesMultiple = '' //zmienna w ktorej przechowujemy kod wszystkich slajdow
+
+for (var i = 0; i < slides.length; i++) {
+  //console.log(slides);
+  slidesMultiple += Mustache.render(slide, slides[i]); // dodajemy do zmiennej slidesMultiple wygenerowane za pomoca petli templaty w ilosci = ilosci obiektow
+  //console.log(slidesMultiple);
+};
 
 result = document.getElementById('main'); // zazanaczamy miejsce gdzie trafia wygenerowane slajdy
-result.insertAdjacentHTML('beforeend', generateSlide); // dodajemy slidy do diva o id main
-
+result.insertAdjacentHTML('beforeend', slidesMultiple); // dodajemy slidy wygenerowane za pomoca petli do diva o id main
 
 
 /* Slides */
