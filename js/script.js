@@ -50,7 +50,7 @@ window.initMap = function(){
   
   var map = new google.maps.Map(
     document.getElementById('map'), {
-    zoom: 9, 
+    zoom: 3, 
     center: startMarker});
 
     for (var i = 0; i < slides.length; i++) {
