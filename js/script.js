@@ -42,13 +42,57 @@ flkty.on( 'scroll', function( progress ) { // function to animate progress bar
   });
 
 /* Maps */
+
 window.initMap = function(){
-  var uluru = {lat: -25.344, lng: 131.036};
+  var infos = document.getElementById('infos'); // tutaj wyswietlaja sie informacje o kliknietym markerze
+  //var uluru = {lat: -25.363, lng: 131.044}; // sposob definiowania wspolrzednych na mapie
+  var startMarker = slides[0].coords;
+  
   var map = new google.maps.Map(
     document.getElementById('map'), {
-    zoom: 4, 
-    center: uluru});
-  var marker = new google.maps.Marker({
-    position: uluru, 
-    map: map});
-}
+    zoom: 9, 
+    center: startMarker});
+
+    for (var i = 0; i < slides.length; i++) {
+    var marker = new google.maps.Marker({
+			position: slides[i].coords,
+      map: map
+      });
+      console.log(slides[i].coords);
+    };
+    
+    
+    //console.log(slides[0].coords);
+    //this.console.log(startMaker);
+    
+  /*  document.getElementById('center-map').addEventListener('click', function(event){
+      event.preventDefault();
+      map.panTo(uluru);
+      map.setZoom(10);
+    }); */
+    
+	}	
+
+  
+  /*var markerOne = new google.maps.Marker({ // tak dodajemy marker do mapy
+    position: uluru, // pozycja markera
+    map: map}); // mapa markera
+  markerOne.addListener('click', function(){
+    infos.innerHTML = 'You clicked markerOne';
+  });
+  var markerTwo = new google.maps.Marker({
+    position: coords2,
+    map: map
+  });
+  markerTwo.addListener('click', function(){
+    infos.innerHTML = 'You clicked markerTwo';
+  });		
+  
+  var markerThree = new google.maps.Marker({
+    position: coords3,
+    map: map
+  });
+  markerThree.addListener('click', function(){
+    infos.innerHTML = 'You clicked markerThree';
+  });	  */
+
