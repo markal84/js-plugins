@@ -32,7 +32,7 @@ var flkty = new Flickity( elem, {
 
 
 var restart = document.querySelector('.btn-restart'); //select restart button
-var cell = function(event){flkty.selectCell(0)} // select first cell in carousel
+var cell = function(event){flkty.selectCell(1)} // select first cell in carousel
 restart.addEventListener('click',cell ); // after clicking restart button select first cell
 
 var progressBar = document.querySelector('.progress-bar'); //select div with class progress bar
