@@ -59,7 +59,7 @@ window.initMap = function(){ // funkcja inicjujaca mape google
       });
       marker.addListener('click', function(event){ // mamy 8 markerow 
         //infos.innerHTML += 'You clicked marker'+i;
-        flkty.selectCell(i); // teraz to definiuje jako ostatni slide,jak zrobic zeby parametr i mial wartosc 1,2,3 itd w zaleznosci od klinkiniecia w marker1, marker2
+        flkty.selectCell(i+1); // Dodalem 1 do parametru i bo slidy widzi od 1 do 8 a macierz slides to 0 do 7... teraz to definiuje jako ostatni slide,jak zrobic zeby parametr i mial wartosc 1,2,3 itd w zaleznosci od klinkiniecia w marker1, marker2
         console.log(slides[i].coords);
       });
     };
