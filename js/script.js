@@ -32,7 +32,7 @@ var flkty = new Flickity( elem, {
 
 
 var restart = document.querySelector('.btn-restart'); //select restart button
-var cell = function(event){flkty.selectCell( '.cell1')} // select first cell in carousel
+var cell = function(event){flkty.selectCell(0)} // select first cell in carousel
 restart.addEventListener('click',cell ); // after clicking restart button select first cell
 
 var progressBar = document.querySelector('.progress-bar'); //select div with class progress bar
@@ -42,38 +42,35 @@ flkty.on( 'scroll', function( progress ) { // function to animate progress bar
   });
 
 /* Maps */
-
-window.initMap = function(){
-  var infos = document.getElementById('infos'); // tutaj wyswietlaja sie informacje o kliknietym markerze
+window.initMap = function(){ // funkcja inicjujaca mape google
+  //var infos = document.getElementById('infos'); // tutaj wyswietlaja sie informacje o kliknietym markerze
   //var uluru = {lat: -25.363, lng: 131.044}; // sposob definiowania wspolrzednych na mapie
-  var startMarker = slides[0].coords;
+  var startMarker = slides[0].coords; // marker startowy na ktorym centruje sie mapa
   
   var map = new google.maps.Map(
     document.getElementById('map'), {
     zoom: 3, 
     center: startMarker});
 
-    for (var i = 0; i < slides.length; i++) {
-    var marker = new google.maps.Marker({
-			position: slides[i].coords,
-      map: map
+    for (var i = 0; i < slides.length; i++) { // petla ktora dodaje markery na mapie z wartosci coords 
+    let marker = new google.maps.Marker({ //stworz marker
+			position: slides[i].coords, // pozycja markera
+      map: map // mapa na ktorej ma byc marker
       });
-      console.log(slides[i].coords);
+      marker.addListener('click', function(event){ // mamy 8 markerow 
+        //infos.innerHTML += 'You clicked marker'+i;
+        flkty.selectCell(i); // teraz to definiuje jako ostatni slide,jak zrobic zeby parametr i mial wartosc 1,2,3 itd w zaleznosci od klinkiniecia w marker1, marker2
+        //var test = slides[i];
+      });
     };
     
-    
-    //console.log(slides[0].coords);
-    //this.console.log(startMaker);
-    
-  /*  document.getElementById('center-map').addEventListener('click', function(event){
+};	
+
+   /*  document.getElementById('center-map').addEventListener('click', function(event){
       event.preventDefault();
       map.panTo(uluru);
       map.setZoom(10);
     }); */
-    
-	}	
-
-  
   /*var markerOne = new google.maps.Marker({ // tak dodajemy marker do mapy
     position: uluru, // pozycja markera
     map: map}); // mapa markera
