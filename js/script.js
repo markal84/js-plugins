@@ -41,6 +41,8 @@ flkty.on( 'scroll', function( progress ) { // function to animate progress bar
     progressBar.style.width = progress * 100 + '%';
   });
 
+ 
+
 /* Maps */
 window.initMap = function(){ // funkcja inicjujaca mape google
   //var infos = document.getElementById('infos'); // tutaj wyswietlaja sie informacje o kliknietym markerze
@@ -59,11 +61,18 @@ window.initMap = function(){ // funkcja inicjujaca mape google
       });
       marker.addListener('click', function(event){ // mamy 8 markerow 
         //infos.innerHTML += 'You clicked marker'+i;
-        flkty.selectCell(i+1); // Dodalem 1 do parametru i bo slidy widzi od 1 do 8 a macierz slides to 0 do 7... teraz to definiuje jako ostatni slide,jak zrobic zeby parametr i mial wartosc 1,2,3 itd w zaleznosci od klinkiniecia w marker1, marker2
-        console.log(slides[i].coords);
+        flkty.selectCell(i+1); // Dodalem 1 do parametru i bo slidy widzi od 1 do 8 a macierz slides to 0 do 7
+        //console.log(slides[i].coords);
       });
-    };
-    
+    };// ponizsza funkcje wrzucilem narazie w druga petle zeby zmieniac jej wrtosci ale po znalezieniu rozwiazania wrzuce w jedna petle
+    for (let i = 0; i <= slides.length; i++){ // slajd 0 nie istnieje a slides index zaczyna sie od 0 , jak zmienic zeby sie do niego nie odwolywac, i=1 nie dziala
+      flkty.on('change', function(i){
+        console.log(i);
+        //console.log(slides[0].coords);
+        map.panTo(slides[i-1].coords);
+        map.setZoom(8);
+      }); 
+    }
 };	
 
    /*  document.getElementById('center-map').addEventListener('click', function(event){
