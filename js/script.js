@@ -52,15 +52,15 @@ window.initMap = function(){ // funkcja inicjujaca mape google
     zoom: 3, 
     center: startMarker});
 
-    for (var i = 0; i < slides.length; i++) { // petla ktora dodaje markery na mapie z wartosci coords 
-    let marker = new google.maps.Marker({ //stworz marker
+    for (let i = 0; i < slides.length; i++) { // petla ktora dodaje markery na mapie z wartosci coords 
+    var marker = new google.maps.Marker({ //stworz marker
 			position: slides[i].coords, // pozycja markera
       map: map // mapa na ktorej ma byc marker
       });
       marker.addListener('click', function(event){ // mamy 8 markerow 
         //infos.innerHTML += 'You clicked marker'+i;
         flkty.selectCell(i); // teraz to definiuje jako ostatni slide,jak zrobic zeby parametr i mial wartosc 1,2,3 itd w zaleznosci od klinkiniecia w marker1, marker2
-        //var test = slides[i];
+        console.log(slides[i].coords);
       });
     };
     
